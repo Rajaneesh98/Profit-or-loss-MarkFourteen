@@ -6,7 +6,7 @@ export default function App() {
 
   var [quantity, updatequantity] = useState("");
 
-  var [sellimgPrice, updatesellingPrice] = useState("");
+  var [sellingPrice, updatesellingPrice] = useState("");
 
   var [msg, updateMsg] = useState("");
 
@@ -27,12 +27,12 @@ export default function App() {
   }
 
   function calculatePrice() {
-    if (sellimgPrice !== "" || costprice !== "" || quantity !== "") {
-      sellimgPrice = Number(sellimgPrice);
+      sellingPrice = Number(sellingPrice);
       costprice = Number(costprice);
       quantity = Number(quantity);
-      if (sellimgPrice > costprice) {
-        var profit = sellimgPrice - costprice;
+      if (sellingPrice > 0 & costprice > 0 & quantity > 0) {
+      if (sellingPrice > costprice) {
+        var profit = sellingPrice - costprice;
 
         var result = profit * quantity;
         //console.log(result);
@@ -43,7 +43,7 @@ export default function App() {
         var profitlResult = `ohh you gained ${result} and percentage is ${roundedPper}`;
         updateMsg(profitlResult);
       } else {
-        var loss = costprice - sellimgPrice;
+        var loss = costprice - sellingPrice;
         var lossPercentage = (loss / costprice) * 100;
 
         var roundedPer = Math.round(lossPercentage, 3);
@@ -56,7 +56,7 @@ export default function App() {
         //console.log(lossPercentage);
       }
     } else {
-      updateMsg("please give valid details");
+      updateMsg("Please give valid details");
     }
   }
 
